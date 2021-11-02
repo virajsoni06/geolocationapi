@@ -46,7 +46,7 @@ async def homepage(request):
 async def geolocate(request):
 #     country_code = request.headers.get("CF-IPCountry", "").upper()
     
-    user_ip = socket.gethostbyname(socket.gethostname())
+    user_ip = socket.gethostbyname(socket.getfqdn())
     r = app.geoip2.country(user_ip)
     country = app.countries.get(r.country.iso_code)
     
