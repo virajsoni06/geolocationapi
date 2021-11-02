@@ -126,7 +126,7 @@
             "hashes": [
                 "sha256:df1451bcd848199905ac0de4631b3d02d6a655ad28ba5e5a4ca29a23358db712"
             ],
-            "version": "==1.4.1"
+            "version": "==2.2.0"
         },
         "pycountry": {
             "hashes": [
