@@ -16,9 +16,9 @@ class WWWRedirectMiddleware:
                     host = value.decode("latin-1")
                     break
 
-            if host and not host.startswith("www."):
-                url = URL(scope=scope)
-                url = url.replace(hostname=f"www.{host}")
-                return RedirectResponse(url, status_code=301)
+#             if host and not host.startswith("www."):
+#                 url = URL(scope=scope)
+#                 url = url.replace(hostname=f"www.{host}")
+#                 return RedirectResponse(url, status_code=301)
 
         return self.app(scope)
