@@ -2,6 +2,7 @@ import os
 import jinja2
 import ujson
 import uvicorn
+import socket
 
 from geoip2 import database
 from starlette.applications import Starlette
@@ -43,8 +44,12 @@ async def homepage(request):
 
 @app.route("/api/geolocate", methods=["GET", "HEAD"])
 async def geolocate(request):
-    country_code = request.headers.get("CF-IPCountry", "").upper()
-    country = app.countries.get(country_code)
+#     country_code = request.headers.get("CF-IPCountry", "").upper()
+    
+    user_ip = socket.gethostbyname(socket.gethostname())
+    r = app.geoip2.country(user_ip)
+    country = app.countries.get(r.country.iso_code)
+    
     if country:
         return UJSONResponse(country)
     else:
